@@ -1,0 +1,26 @@
+﻿<section>
+  <div class="page-header">
+    <h1>
+      Mes RDV
+      <a class="btn btn-primary pull-right" data-ui-sref="admin.appointments.create">
+        <i class="glyphicon glyphicon-plus"></i>
+      </a>
+    </h1>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="appointment in vm.appointments" data-ui-sref="admin.appointments.edit({appointmentId: appointment._id})" class="list-group-item">
+      <small class="list-group-item-text">
+
+        <span data-ng-bind="appointment.created | date:'mediumDate'"></span>
+
+        <span ng-if="appointment.user" ng-bind="appointment.user.displayName"></span>
+        <span ng-if="!appointment.user">#</span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="appointment.title"></h4>
+      <p class="list-group-item-text" data-ng-bind="appointment.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="appointments.$resolved && !appointments.length">
+    No appointments yet, why don't you <a data-ui-sref="admin.appointments.create">create one</a>?
+  </div>
+</section>

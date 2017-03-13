@@ -1,0 +1,39 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.appointment._id ? 'Edit appointment' : 'New appointment'}}</h1>
+  </div>
+  <div class="pull-right">
+    <a ng-show="vm.appointment._id" class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.appointmentForm" class="form-horizontal" ng-submit="vm.save(vm.form.appointmentForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="title">Acheteur</label>
+          <input name="title" type="text" ng-model="vm.appointment.title" id="title" class="form-control" placeholder="Title" required autofocus>
+          <div ng-messages="vm.form.appointmentForm.title.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">*Ce champ est requis.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="content">Description</label>
+          <textarea name="content" data-ng-model="vm.appointment.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Horaires</label>
+          <input name="time" type="time" ng-model="vm.appointment.time" id="time" class="form-control" required>
+          <div ng-messages="vm.form.appointmentForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">*Ce champ est requis.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.appointment._id ? 'Update' : 'Create'}}</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
