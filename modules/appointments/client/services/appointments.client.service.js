@@ -6,7 +6,7 @@
     .module('appointments')
     .factory('AppointmentsService', AppointmentsService);
 
-  AppointmentsService.$inject = ['$resource'];
+  AppointmentsService.$inject = ['$resource', '$log'];
 
   function AppointmentsService($resource) {
     var Appointment = $resource('api/appointments/:appointmentId', {
